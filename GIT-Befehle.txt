@@ -1,0 +1,126 @@
+#1 Repository erstellen:
+========================
+Einen beliebigen (leeren) Ordner auswählen und folgenden Befehl eintippen: 
+
+git init
+
+Ein ".git" Ordner wird erstellt, was die Repository ist. Oberhalb dieses Ordners
+befindet sich das Workspace, also z. B. der leere Ordner TestRepo ist das Workspace und
+TestRepo/.git ist das dazugehörige Repository.
+
+
+#2 Datei für die Repository vorbereiten
+========================================
+immer vor Commit ausführen!
+
+git add <Datennamen> oder git add --all (für alle Dateien im Ordner)
+
+Bsp: git add index.html
+
+
+#3 Datei Versionieren und Repository ablegen
+=============================================
+Vorher git add ausführen! 
+
+git commit -m "kurz Beschreibung was man geändert hat z. B. oder Jira-Ticket nr etc"
+ 
+Bsp: git commit -m "meine erste versionierung"
+
+
+#4 Alle bereits getätigten Versionierungen anzeigen:
+====================================================
+
+git log (einfache Darstellung des aktuellen Entwicklungsstranges (branches))
+git log --all (für alle branches)
+git log --all --graph (grafische anzeige der branches)
+git log --all --graph --oneline (grafische Darstellung in einer Zeile)
+
+
+#5 Die zuletzt gemachte Version wiederherstellen:
+=================================================================
+
+git reset --hard HEAD
+
+HEAD = ist der aktuelle Stand des Workspace
+
+
+#6 Eine beliebige Version wiederherstellen:
+===========================================
+vorher über "git log" den hash der gewünschten Version ermitteln! 
+
+git checkout <hash>
+
+beim <hash> reichen die ersten 5 Zeichen, wenn es eindeutig ist
+
+
+#7 Änderung zur letzen Versionierung einer Datei anzeigen:
+==========================================================
+
+git diff <Datenname>
+
+
+#8 Neuen Entwicklungsstrang (Branch) anlegen:
+=============================================
+Branch bedeutet das wir eine Kopie des aktuellen Entwicklungsstands machen 
+und dann an dieser Kopie weiter arbeiten. Es können beliebige viele Kopien (branches) angelegt werden.
+
+git checkout -b <"BranchName">
+
+
+#9 Branch (Entwicklungsstrang) wechseln:
+========================================
+
+git checkout <Branchname>
+
+Bsp für Masterbranch: git checkout master
+
+
+#10 Branches Zusammenführen (Merge)
+================================================
+Beispiel: 2 Entwickler arbeiten am selbe Projekt, der eine in Branch 1 und der andere in Branch 2. 
+Anschließend sollen die Ergebnisse zusammengeführt werden:
+
+#Fast Forward Merge:
+Wenn man zum Beispiel Branch2 mit Branch1 zusammenführen möchte, wobei sich bei Branch1 nichts geändert hat.
+
+-Zu dem gewünschten Branch wechseln (z. B. Branch1)
+-Dann mit git merge <BranchName> die zu zusammenzuführende Branch auswählen. Z.B. Branch2
+
+
+#11 Aktuellen Arbeitsstand (noch nicht comitted) zwischenspeichern
+===================================================================
+Beispiel: Mann arbeitet an einem Projekt weiter und muss aber plötzlich auf der produktive Version BugFix vornehmen.
+Dann ist es möglich die Änderung die man bereits auf der produktiven version gemacht hat zwischezuspeichern und das original
+wiederherzustellen:
+
+-Die gemachten Änderung vorher Adden mit: git add
+-Anschließend git stash ausführen.
+
+
+#12 Den gespeicherne Arbeitsstand wiederherstellen (Siehe #11):
+===============================================================
+
+git stash pop
+
+
+#13 In Github ein Repository übertragen und Teilen:
+====================================================
+
+-www.github.com aufrufen und anmelden
+-eine Repository in github erzeugen (public repository ist kostenfrei)
+-Repository URL kopieren
+
+- mit git clone <URL> <lokale Repository/oder ein Ordner> mit github verbinden
+
+- mit git push ins github repository übertragen
+
+
+#14 Aus Github ins lokale Repository übertragen (Siehe #13):
+============================================================
+
+git pull  
+
+
+
+
+
